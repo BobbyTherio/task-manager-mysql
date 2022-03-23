@@ -73,7 +73,7 @@ app.delete('/:task_id', function(req, res){
     });
 });
 
-// PATCH : Update priority level of a task
+// PATCH : Update priority level and progress level of a task
 app.patch('/:task_id', function(req, res){
     let taskId = req.params.task_id;
 
@@ -82,12 +82,12 @@ app.patch('/:task_id', function(req, res){
         //Check if task was found
         if(result){
             //Update Task
-            if (req.body.priority_level == null) {
+            if (req.body.priority_level === undefined) {
                 result.priority_level = result.priority_level
             } else {
                  result.priority_level = req.body.priority_level;
             }
-             if (req.body.progress_level == null){
+            if (req.body.progress_level === undefined){
                  result.progress_level = result.progress_level
             } else {
               result.progress_level = req.body.progress_level;
